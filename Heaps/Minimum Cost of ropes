@@ -1,0 +1,40 @@
+https://practice.geeksforgeeks.org/problems/minimum-cost-of-ropes-1587115620/1
+
+
+
+
+class Solution {
+    public:
+    //Function to return the minimum cost of connecting the ropes.
+    long long minCost(long long arr[], long long n) {
+        priority_queue<long long,vector<long long>,greater<long long>> minheap;
+        long long cost = 0;
+        
+        for(int i=0; i<n; i++) minheap.push(arr[i]);
+        
+        while(minheap.size() >= 2) {
+            long long sum = 0;
+            // int cnt = 0;
+            
+            // while(cnt < 2) {
+            //     sum += minheap.top();
+            //     minheap.pop();
+            //     cnt++;
+            // }
+            
+            long long a = minheap.top();
+            minheap.pop();
+            
+            long long b = minheap.top();
+            minheap.pop();
+            
+            sum = a + b;
+            minheap.push(sum);
+            
+            cost += sum;
+            // cnt = 0;
+        }
+        
+        return cost;
+    }
+};
